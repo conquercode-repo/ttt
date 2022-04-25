@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Grid';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import QuestionCard from '../components/QuestionCard'
 import Multiplayer from '../components/Multiplayer'
 import Score from '../components/Score'
 
 export default function BasicCard() {
+    const [showAnswer, setShowAnswer] = useState(false)
     const [players, setPlayers] = useState([
         {
             name: 'Player One',
@@ -17,26 +14,11 @@ export default function BasicCard() {
             racismLevel: 0
         }
     ]);
-    // const [activePlayer, setActivePlayer] = useState(0)
-    // useEffect(() => {
-    //     let firstLoad = true
-    //     if(firstLoad){
-    //         setPlayers([{
-    //             name: 'Player One',
-    //             id: 1,
-    //             score: 0,
-    //             racismLevel: 0
-    //         }])
-    //         firstLoad = false;
-    //     }
-    //     console.log(players)
-    // }, []);
-    // let playerObj = {
-    //     name: '',
-    //     id: 0,
-    //     score: 0,
-    //     racismLevel: 0
-    // }
+
+    const submitAnswers = () => {
+        setShowAnswer(true)
+    }
+
     const addPlayer = (e) => {
         if(players.length < 2){
             setPlayers(
@@ -58,10 +40,10 @@ export default function BasicCard() {
                 <Multiplayer players={players} addPlayer={() => addPlayer()} />
             </Grid>
             <Grid xs={6} item>
-                <QuestionCard />
+                <QuestionCard showAnswer={showAnswer} />
             </Grid>
             <Grid xs={3} item>
-                <Score players={players} />
+                <Score submitAnswers={submitAnswers} players={players} />
             </Grid>
         </Grid>
     );
