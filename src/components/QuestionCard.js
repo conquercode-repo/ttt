@@ -18,27 +18,25 @@ const bull = (
 );
 
 export default function BasicCard() {
-  return (
-    <Card>
-      <CardContent>
-        <Typography sx={{ fontSize: 40 }} color="text.secondary" gutterBottom>
-          Teacher, Toucher, or Terrorist?
-        </Typography>
-        <CardMedia
-            component="img"
-            height="500"
-            width="250"
-            image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
-            alt="green iguana"
-        />
-      </CardContent>
-      <CardActions>
-        <ButtonGroup size="large" aria-label="large button group" style={{minWidth: '70%', marginLeft: '15%', marginLeft: '15%'}}>
-            <Button style={{width: '33.5%'}}>Teacher</Button>
-            <Button style={{width: '33%'}}>Toucher</Button>
-            <Button style={{width: '33.5%'}}>Terrorist</Button>
-        </ButtonGroup>
-      </CardActions>
-    </Card>
-  );
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+    }
+    return (
+        <Card>
+            <CardContent>
+                <Typography sx={{ fontSize: 40 }} color="text.secondary" gutterBottom>
+                Teacher, Toucher, or Terrorist?
+                </Typography>
+                <CardMedia
+                    component="img"
+                    height="500"
+                    width="250"
+                    image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
+                    alt="green iguana"
+                />
+            </CardContent>
+        </Card>
+    );
 }

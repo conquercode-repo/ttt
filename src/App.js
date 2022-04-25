@@ -42,7 +42,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Login />} />
           <Route path="about" element={<About />} />
           <Route path="login" element={<Login />} />
           <Route path="gamelobby" element={<GameLobby />} />
