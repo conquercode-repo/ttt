@@ -6,19 +6,9 @@ import Typography from '@mui/material/Typography';
 
 export default function BasicCard(props) {
     let showAnswer = props.showAnswer || false
-    function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-    }
-    
-    const filePaths = ['teacher', 'toucher', 'terrorist']
-    const typeIndex = getRandomInt(0,3)
-    const thisFilePath = `https://teachertoucherterrorist.com/images/` + filePaths[typeIndex]
-    const imageArrPosition = getRandomInt(0,139);
-    const thisImage = thisFilePath + `/img` + imageArrPosition + `.jpg`;
-    const thisAnswer = thisFilePath + `/exp` + imageArrPosition + `.jpg`;
-    console.log(thisImage, thisAnswer, thisFilePath)
+    let question = props.question || 'err'
+    let answer = props.answer || 'err'
+    let type = props.type || 'err'
 
     return (
         <Card>
@@ -27,22 +17,22 @@ export default function BasicCard(props) {
                 Teacher, Toucher, or Terrorist?
                 </Typography>
                 {
-                    showAnswer ?   
+                    !showAnswer ?   
+                    <Card>
+                        <CardMedia
+                            component="img"
+                            height="100%"
+                            src={question}
+                        />
+                    </Card> : 
                     <Card>
                         <CardContent>
-                            {filePaths[typeIndex]}
+                            {type}
                         </CardContent>
                         <CardMedia
                             component="img"
                             height="100%"
-                            src={thisAnswer}
-                        />
-                    </Card> : 
-                    <Card>
-                        <CardMedia
-                            component="img"
-                            height="100%"
-                            src={thisImage}
+                            src={answer}
                         />
                     </Card>
                 }

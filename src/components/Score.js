@@ -16,6 +16,10 @@ export default function BasicCard(props) {
         e.preventDefault();
         props.submitAnswers(true)
     }
+    const nextQuestion = (e) => {
+        e.preventDefault();
+        props.nextQuestion(true)
+    }
     return (
         <>
             {players && players.map((item) => {
@@ -47,14 +51,19 @@ export default function BasicCard(props) {
                         </CardActions>
                     </Card>
                 )
-        })}
-        <Card>
-            <CardActions>
-                <Button fullWidth onClick={(e) => submitAnswers(e)}>
-                    Get Answer
-                </Button>
-            </CardActions>
-        </Card>
+            })}
+            <Card>
+                <CardActions>
+                    <Button fullWidth onClick={(e) => submitAnswers(e)}>
+                        Get Answer
+                    </Button>
+                </CardActions>
+                <CardActions>
+                    <Button fullWidth onClick={(e) => nextQuestion(e)}>
+                        Next Question
+                    </Button>
+                </CardActions>
+            </Card>
         </>
     );
 }
